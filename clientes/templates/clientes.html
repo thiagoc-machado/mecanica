@@ -3,16 +3,16 @@
 {% endblock %} {% block 'dashboard' %}
 <div class="container">
   <div class="row">
-    <div class="col-md card-dashboard">
+    <div onclick="exibir_form('1')" class="col-md card-dashboard">
       <p class="text-card">Adicionar clientes</p>
     </div>
 
-    <div class="col-md card-dashboard">
+    <div onclick="exibir_form('2')" class="col-md card-dashboard">
       <p class="text-card">Atualizar clientes</p>
     </div>
   </div>
 
-  <div class="adicionar-cliente">
+  <div id="adicionar-cliente" class="adicionar-cliente">
     <form action="{% url 'clientes' %}" method="POST">
       {% csrf_token %}
       <div class="row">
@@ -103,6 +103,14 @@
       <br />
       <input type="submit" value="Cadastrar" class="btn-principal" />
     </form>
+  </div>
+  <div id="att_cliente">
+    <p></p>
+    <select id="cliente-select" onchange="dados_cliente()" class="form-control">
+      {%for cliente in clientes%}
+      <option value="cliente.id">{{cliente.nome}}</option>
+      {%endfor%}
+    </select>
   </div>
 </div>
 <script src="{% static 'clientes/js/clientes.js' %}"></script>
