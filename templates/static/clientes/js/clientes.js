@@ -19,11 +19,11 @@ function exibir_form(tipo) {
     att_cliente.style.display = "block";
   }
 }
-
 function dados_cliente() {
   cliente = document.getElementById("cliente-select");
   csrf_token = document.querySelector("[name=csrfmiddlewaretoken]").value;
   id_cliente = cliente.value;
+
   data = new FormData();
   data.append("id_cliente", id_cliente);
 
@@ -37,5 +37,19 @@ function dados_cliente() {
     .then(function (result) {
       return result.json();
     })
-    .then(function (data) {});
+    .then(function (data) {
+      document.getElementById("form-att-cliente").style.display = "block";
+
+      nome = document.getElementById("nome");
+      nome.value = data["nome"];
+
+      sobrenome = document.getElementById("sobrenome");
+      sobrenome.value = data["sobrenome"];
+
+      cpf = document.getElementById("cpf");
+      cpf.value = data["cpf"];
+
+      email = document.getElementById("email");
+      email.value = data["email"];
+    });
 }

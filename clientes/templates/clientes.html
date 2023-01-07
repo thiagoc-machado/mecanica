@@ -107,10 +107,23 @@
   <div id="att_cliente">
     <p></p>
     <select id="cliente-select" onchange="dados_cliente()" class="form-control">
-      {%for cliente in clientes%}
-      <option value="cliente.id">{{cliente.nome}}</option>
-      {%endfor%}
+      {% for cliente in clientes %}
+      <option value="{{cliente.id}}">{{cliente.nome}}</option>
+      {% endfor %}
     </select>
+    <br />
+    <hr />
+
+    <div id="form-att-cliente">
+      <p>Nome:</p>
+      <input id="nome" type="text" class="form-control" />
+      <p>Sobrenome:</p>
+      <input id="sobrenome" type="text" class="form-control" />
+      <p>E-mail:</p>
+      <input id="email" type="text" class="form-control" />
+      <p>CPF:</p>
+      <input id="cpf" type="text" class="form-control" />
+    </div>
   </div>
 </div>
 <script src="{% static 'clientes/js/clientes.js' %}"></script>
